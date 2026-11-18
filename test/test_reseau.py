@@ -5,6 +5,8 @@ import xmlrunner
 from Reseau import Reseau
 from Terrain import Terrain, Case
 
+from random import randint
+
 class TestReseau(unittest.TestCase):
 
     def test_definition_entree(self):
@@ -12,8 +14,17 @@ class TestReseau(unittest.TestCase):
         self.fail()
 
     def test_ajout_noeud(self):
-        # TODO
-        self.fail()
+        r = Reseau()
+
+        self.assertTrue(len(r.noeuds) == 0)
+
+        for n in range(10):
+            x = randint(0, 10)
+            y = randint(0, 10)
+
+            r.ajouter_noeud(n, (x, y))
+
+            self.assertTrue(r.noeuds[n] == (x, y))
 
     def test_ajout_arc(self):
         # TODO

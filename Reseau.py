@@ -54,14 +54,10 @@ class Reseau:
 
                 arcs_noeud = list()
 
-                #print(f"Noeud {n}")
-
                 # Liste des arcs contenant ce noeud
                 for arc in self.arcs:
                     if arc[0] == n or arc[1] == n:
                         arcs_noeud.append(arc)
-
-                #print(f"\tArcs partants: {arcs_noeud}")
 
                 for arc in arcs_noeud:
                     if arc[0] == n:
@@ -70,9 +66,6 @@ class Reseau:
                     else:
                         if arc[0] not in noeuds:
                             noeuds.append(arc[0])
-
-                #print(f"\tNoeuds decouverts: {noeuds}")
-                #input()
 
         return len(noeuds) == len(self.noeuds)
 

@@ -40,7 +40,7 @@ class Reseau:
         arcs_entree = list()
 
         for arc in self.arcs:
-            if arc[0] == n or arc[1] == n:
+            if arc[0] == self.noeud_entree or arc[1] == self.noeud_entree:
                 arcs_entree.append(arc)
 
         if len(arcs_entree) == 0:

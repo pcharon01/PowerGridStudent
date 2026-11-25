@@ -70,6 +70,29 @@ class TestReseau(unittest.TestCase):
         r.ajouter_arc(2, 3)
         self.assertTrue(len(r.arcs) == 2, f"Expected 2, got {len(r.arcs)}")
 
+    def test_validation_un_seul_noeud_correcte(self):
+        r = Reseau()
+
+        x0 = randint(0, 10)
+        y0 = randint(0, 10)
+
+        r.ajouter_noeud(0, (x0, y0))
+        r.definir_entree(0)
+
+        self.assertTrue(r.valider_reseau())
+
+    def test_validation_un_seul_noeud_incorrecte(self):
+        r = Reseau()
+
+        x0 = randint(0, 10)
+        y0 = randint(0, 10)
+
+        r.ajouter_noeud(0, (x0, y0))
+        r.ajouter_noeud(1, (y0, x0))
+        r.definir_entree(0)
+
+        self.assertFalse(r.valider_reseau())
+
     def test_validation_correcte(self):
         r = Reseau()
         r.noeuds[0] = (0, 0)

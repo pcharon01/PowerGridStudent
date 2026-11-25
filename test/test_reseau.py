@@ -42,16 +42,33 @@ class TestReseau(unittest.TestCase):
     def test_ajout_arc(self):
         r = Reseau()
 
-        r.ajouter_noeud(0, (randint(0, 10), randint(0, 10)))
-        r.ajouter_noeud(1, (randint(0, 10), randint(0, 10)))
-        r.ajouter_noeud(2, (randint(0, 10), randint(0, 10)))
+        x0 = randint(0, 10)
+        y0 = x0
 
-        self.assertTrue(len(r.noeuds) == 2)
-        self.assertTrue()
+        while y0 == x0:
+            y0 = randint(0, 10)
+        
+        r.ajouter_noeud(0, (x0, y0))
+        r.ajouter_noeud(1, (y0, x0))
+        r.ajouter_noeud(2, (x0, y0))
+
+        self.assertTrue(len(r.noeuds) == 3)
+        self.assertTrue(len(r.arcs) == 0)
+
+        r.ajouter_arc(2, 3)
+        self.assertTrue(len(r.arcs) == 0, f"Expected 0, got {len(r.arcs)}")
 
         r.ajouter_arc(0, 1)
+        self.assertTrue(len(r.arcs) == 1, f"Expected 1, got {len(r.arcs)}")
 
-        self.assertTrue
+        r.ajouter_arc(0, 1)
+        self.assertTrue(len(r.arcs) == 1, f"Expected 1, got {len(r.arcs)}")
+
+        r.ajouter_arc(1, 2)
+        self.assertTrue(len(r.arcs) == 2, f"Expected 2, got {len(r.arcs)}")
+
+        r.ajouter_arc(2, 3)
+        self.assertTrue(len(r.arcs) == 2, f"Expected 2, got {len(r.arcs)}")
 
     def test_validation_correcte(self):
         r = Reseau()

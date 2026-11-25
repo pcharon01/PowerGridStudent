@@ -10,8 +10,21 @@ from random import randint
 class TestReseau(unittest.TestCase):
 
     def test_definition_entree(self):
-        # TODO
-        self.fail()
+        for k in range(10):
+            r = Reseau()
+
+            for n in range(5):
+                x = randint(0, 10)
+                y = randint(0, 10)
+
+                r.ajouter_noeud(n, (x, y))
+
+            r.definir_entree(k)
+
+            if k < 5:
+                self.assertEqual(r.noeud_entree, k)
+            else:
+                self.assertEqual(r.noeud_entree, -1)
 
     def test_ajout_noeud(self):
         r = Reseau()
@@ -27,8 +40,18 @@ class TestReseau(unittest.TestCase):
             self.assertTrue(r.noeuds[n] == (x, y))
 
     def test_ajout_arc(self):
-        # TODO
-        self.fail()
+        r = Reseau()
+
+        r.ajouter_noeud(0, (randint(0, 10), randint(0, 10)))
+        r.ajouter_noeud(1, (randint(0, 10), randint(0, 10)))
+        r.ajouter_noeud(2, (randint(0, 10), randint(0, 10)))
+
+        self.assertTrue(len(r.noeuds) == 2)
+        self.assertTrue()
+
+        r.ajouter_arc(0, 1)
+
+        self.assertTrue
 
     def test_validation_correcte(self):
         r = Reseau()
